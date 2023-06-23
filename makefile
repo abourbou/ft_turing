@@ -3,7 +3,9 @@ OCAMLMAKEFILE = ./OCamlMakefile
 
 PATH_SRC	= src
 
-SOURCES		= $(addprefix $(PATH_SRC)/, main.ml \
+SOURCES		= $(addprefix $(PATH_SRC)/, \
+				hello.ml \
+				main.ml \
 			)
 PACKS		=
 RESULT		= ft_turing
