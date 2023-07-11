@@ -8,13 +8,13 @@
 open Yojson *)
 
 
-
-(* print_string "Hello world!\n"; *)
-
 Hello.print_hello();
 
+print_string Turing_machine.name ;
 
+Array.iter print_string Turing_machine.alphabet;
+(* Turing_machine.alphabet.iter print_string; *)
 
 (* print_endline "Hello world!" *)
 
-let x = 5 in x * x
+let x = 5 in x * x;

@@ -5,6 +5,7 @@ PATH_SRC	= src
 
 SOURCES		= $(addprefix $(PATH_SRC)/, \
 				hello.ml \
+				turing_machine.ml \
 				main.ml \
 			)
 PACKS		=
