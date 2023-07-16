@@ -7,9 +7,8 @@ mod parsing;
 fn main() {
     let args: Vec<String> = env::args().skip(1).collect();
 
-	for arg in &args {
-		if arg == "--help"  || arg == "-h" {
-			println!(
+	if args.iter().any(|arg| arg == "--help" || arg == "-h"){
+		println!(
 				"usage: ft_turing [-h] jsonfile input
 				positional arguments:
 				jsonfile json description of the machine
@@ -17,7 +16,6 @@ fn main() {
 				optional arguments:
 				-h, --help show this help message and exit");
 			return;
-		}
 	}
 
 	if args.len() != 2 {
