@@ -16,22 +16,24 @@ struct JsonMachineDescription {
 	transitions: HashMap<String, Value>,
 }
 
-struct Transition {
+#[derive(Debug)]
+pub struct Transition {
 	read : char,
 	to_state : String,
 	write : char,
 	go_right : bool,
 }
 
-struct MachineDescription {
+#[derive(Debug)]
+pub struct MachineDescription {
 	name: String,
 	blank: char,
 	initial: String,
 	finals: Vec<String>,
-	list_transitions: HashMap<String, Transition>,
+	list_transitions: HashMap<String, Vec<Transition>>,
 }
 
-pub fn parse_json(path : &str) {
+pub fn parse_json(path : &str) -> MachineDescription {
 
 	let error_path = "Couldn't find or load \"".to_owned() + path + "\" json";
 	let json_str = fs::read_to_string(path)
@@ -41,7 +43,9 @@ pub fn parse_json(path : &str) {
 								.expect("Unvalid json data");
 	check_validity_json(&json_struct);
 
-	println!("Everything works ! (for now...)");
+	let final_description : MachineDescription = create_description(json_struct);
+
+	final_description
 }
 
 fn check_validity_json(json_struct: &JsonMachineDescription) {
@@ -158,5 +162,29 @@ fn check_transition(alphabet : &[String], states: &[String], transition : &serde
 
 	if transition["action"] != "LEFT" && transition["action"] != "RIGHT" {
 		panic!("Invalid transition");
+	}
+}
+
+
+fn create_description(json_struct: JsonMachineDescription) -> MachineDescription {
+
+	MachineDescription {
+		name: json_struct.name,
+		blank: json_struct.blank.chars().next().unwrap(),
+		initial: json_struct.initial,
+		finals: json_struct.finals,
+		list_transitions: json_struct.transitions.iter().map(|transi| {
+			(transi.0.clone(),
+			transi.1.as_array().unwrap()
+				.iter().map(|transition| {
+					let obj_transi = transition.as_object().unwrap();
+					Transition {read: 		obj_transi["read"].as_str().unwrap().chars().next().unwrap(),
+								to_state:	obj_transi["to_state"].as_str().unwrap().to_string(),
+								write:		obj_transi["write"].as_str().unwrap().chars().next().unwrap(),
+								go_right:	obj_transi["action"].as_str().unwrap() == "RIGHT",
+							}
+				}).collect()
+			)
+			}).collect(),
 	}
 }
