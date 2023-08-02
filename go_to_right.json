@@ -1,0 +1,13 @@
+{
+	"name" : "go_to_right",
+	"alphabet": ["."],
+	"blank" : ".",
+	"states" : [ "scanright", "HALT"],
+	"initial" : "scanright",
+	"finals" : [ "HALT" ],
+	"transitions" : {
+		"scanright": [
+			{ "read" : ".", "to_state": "scanright", "write": ".", "action": "RIGHT"}
+		]
+	}
+}
