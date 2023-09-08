@@ -1,6 +1,6 @@
 {
 	"name"    : "is_palindrome",
-	"alphabet": ["z", "y", "x", "w", "v", "u", "t", "s", "r", "q", "p", "o", "n", "m", "l", "k", "j", "i", "h", "g", "f", "e", "d", "c", "b", "a", "0", ".", "1", "Y", "N"],
+	"alphabet": ["z", "y", "x", "w", "v", "u", "t", "s", "r", "q", "p", "o", "n", "m", "l", "k", "j", "i", "h", "g", "f", "e", "d", "c", "b", "a", "0", ".", "1"],
 	"blank"   : ".",
 	"states"  : ["check_palindrome", "go_back_first", "yes", "no", "HALT", "state_z", "state_y", "state_x", "state_w", "state_v", "state_u", "state_t", "state_s", "state_r", "state_q", "state_p", "state_o", "state_n", "state_m", "state_l", "state_k", "state_j", "state_i", "state_h", "state_g", "state_f", "state_e", "state_d", "state_c", "state_b", "state_a", "must_be_z", "must_be_y", "must_be_x", "must_be_w", "must_be_v", "must_be_u", "must_be_t", "must_be_s", "must_be_r", "must_be_q", "must_be_p", "must_be_o", "must_be_n", "must_be_m", "must_be_l", "must_be_k", "must_be_j", "must_be_i", "must_be_h", "must_be_g", "must_be_f", "must_be_e", "must_be_d", "must_be_c", "must_be_b", "must_be_a"],
 	"initial" : "check_palindrome",
@@ -1601,11 +1601,11 @@
 		],
 		"yes": [
 			{ "read": "0", "to_state": "yes", "write": "0", "action": "RIGHT"},
-			{ "read": ".", "to_state": "HALT", "write": "Y", "action": "LEFT"}
+			{ "read": ".", "to_state": "HALT", "write": "y", "action": "LEFT"}
 		],
 		"no": [
 			{ "read": "0", "to_state": "no", "write": "0", "action": "RIGHT"},
-			{ "read": ".", "to_state": "HALT", "write": "N", "action": "LEFT"}
+			{ "read": ".", "to_state": "HALT", "write": "n", "action": "LEFT"}
 		]
 	}
 
