@@ -11,17 +11,19 @@ fn main() {
 
 	if args.iter().any(|arg| arg == "--help" || arg == "-h"){
 		println!(
-				"usage: ft_turing [-h] jsonfile input
-				positional arguments:
-				jsonfile json description of the machine
-				input input of the machine
-				optional arguments:
-				-h, --help show this help message and exit");
+"usage: ft_turing [-h] jsonfile input
+
+	positional arguments:
+	  jsonfile	json description of the machine
+	  input		input of the machine
+
+	optional arguments:
+	  -h, --help	show this help message and exit");
 			return;
 	}
 
 	if args.len() != 2 {
-		println!("Wrong number of arguments, usage: ft_turing [-h] jsonfile input");
+		println!("Wrong number of arguments\nusage: ft_turing [-h] jsonfile input");
 		return;
 	}
 	let desc = parse_json(&args[0]);
