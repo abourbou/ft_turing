@@ -1,8 +1,10 @@
 
 use std::env;
 use parsing::parse_json::parse_json;
+use process_turing::process::process;
 
 mod parsing;
+mod process_turing;
 
 fn main() {
     let args: Vec<String> = env::args().skip(1).collect();
@@ -22,5 +24,8 @@ fn main() {
 		println!("Wrong number of arguments, usage: ft_turing [-h] jsonfile input");
 		return;
 	}
-	parse_json(&args[0]);
+	let desc = parse_json(&args[0]);
+
+	process(desc, &args[1]);
+
 }
