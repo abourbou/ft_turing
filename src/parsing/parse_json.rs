@@ -18,19 +18,19 @@ struct JsonMachineDescription {
 
 #[derive(Debug)]
 pub struct Transition {
-	read : char,
-	to_state : String,
-	write : char,
-	go_right : bool,
+	pub read : char,
+	pub to_state : String,
+	pub write : char,
+	pub go_right : bool,
 }
 
 #[derive(Debug)]
 pub struct MachineDescription {
-	name: String,
-	blank: char,
-	initial: String,
-	finals: Vec<String>,
-	list_transitions: HashMap<String, Vec<Transition>>,
+	pub name: String,
+	pub blank: char,
+	pub initial: String,
+	pub finals: Vec<String>,
+	pub list_transitions: HashMap<String, Vec<Transition>>,
 }
 
 pub fn parse_json(path : &str) -> MachineDescription {
