@@ -1,6 +1,6 @@
 
 use std::env;
-use parsing::parse_json::parse_json;
+use parsing::{parse_json::parse_json, print_description::print_description};
 use process_turing::process::process;
 
 mod parsing;
@@ -25,7 +25,7 @@ fn main() {
 		return;
 	}
 	let desc = parse_json(&args[0]);
-
+	print_description(&desc);
 	process(desc, &args[1]);
 
 }

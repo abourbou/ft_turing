@@ -27,6 +27,8 @@ pub struct Transition {
 #[derive(Debug)]
 pub struct MachineDescription {
 	pub name: String,
+	pub alphabet: Vec<String>,
+	pub states: Vec<String>,
 	pub blank: char,
 	pub initial: String,
 	pub finals: Vec<String>,
@@ -170,6 +172,8 @@ fn create_description(json_struct: JsonMachineDescription) -> MachineDescription
 
 	MachineDescription {
 		name: json_struct.name,
+		alphabet: json_struct.alphabet,
+		states: json_struct.states,
 		blank: json_struct.blank.chars().next().unwrap(),
 		initial: json_struct.initial,
 		finals: json_struct.finals,

@@ -60,10 +60,5 @@ pub fn build_tape(tape: String, index_to_change: usize, char_to_replace: char, n
 }
 
 pub fn process(desc: MachineDescription, tape: &str) {
-
-	println!("{}", desc.initial);
-	println!("{}", tape);
-
-
 	turing_process_rec(tape.to_string(), &desc.initial, &desc, 0);
 }
