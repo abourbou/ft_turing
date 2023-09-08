@@ -17,8 +17,9 @@ pub fn print_state(tape: &str, state: &str, next_tran: &Transition, index: i32) 
 #[tailcall]
 pub fn turing_process_rec(tape: String, state: &str, desc: &MachineDescription, index: i32)
 {
-	if desc.finals.iter()
-				  .any(|final_state| state == final_state) {
+	let find_final = desc.finals.iter().find(|&final_state| state == final_state);
+	if let Some(final_state) = find_final {
+		println!("[{}] {}", tape.color("green").bold(), final_state);
 		return;
 	}
 
